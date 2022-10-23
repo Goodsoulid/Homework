@@ -1,49 +1,47 @@
 package com.example.homework;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 public class Product {
-    int id;
-    String name;
-    int price;
+    private final String name;
+    private final int cost;
 
-    public Product(int id, String name, int price) {
-        this.id = id;
+    public Product(String name, int cost) {
         this.name = name;
-        this.price = price;
+        this.cost = cost;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getCost() {
+        return cost;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" + "name=" + name + ", cost=" + cost + '}';
     }
 }
 
-class Shop {
-    ArrayList<Product> arrayList = new ArrayList<Product>();
+class Main{
 
-    void addProduct(int id, String name, int price) {
-        boolean noExsept = false;
-        for (Product shop : arrayList) {
-            if (shop.id == id){
-                noExsept = true;
-                break;
-            }
-        }
-        if (noExsept == false){
-            arrayList.add(new Product(id, name, price));
-        }
-    }
-
-    ArrayList<Product> getList () {
-        return arrayList;
-    }
-}
-
-class Print {
     public static void main(String[] args) {
-        Shop shop = new Shop();
-        shop.addProduct(10,"Apple", 10);
-        shop.addProduct(10,"Potato", 12);
-        shop.addProduct(8,"Orange", 15);
-        System.out.println(shop.arrayList);
 
+        List<Product> products = new ArrayList<>();
+        products.add(new Product("морковь", 10000));
+        products.add(new Product("яблоко", 12300));
+        products.add(new Product("банан", 12200));
+        products.add(new Product("треугольник", 10100));
 
+        products.sort(Comparator.comparingLong(Product::getCost));
+        System.out.println(products);
+        products.sort(Comparator.comparingLong(Product::getCost).reversed());
+        System.out.println(products);
 
     }
+
 }
