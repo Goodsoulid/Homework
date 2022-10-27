@@ -8,7 +8,7 @@ public class Transformation {
 
         Adult adult1 = converter.convert(adult);
 
-        System.out.println("An adult has the following parameters: name - " + adult.name + ", age - " + adult.age + ", weight - " + adult.height);
+        System.out.println("An adult has the following parameters: name - " + adult1.name + ", age - " + adult1.age + ", weight - " + adult1.height);
     }
 }
 
